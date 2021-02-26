@@ -279,12 +279,12 @@ It should output something like this:
 ```
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP      PORT(S)        AGE
 kubernetes         ClusterIP      10.0.0.1     <none>           443/TCP        4m54s
-nginx-web-server   LoadBalancer   10.0.94.47   51.143.235.215   80:32580/TCP   7s
+nginx-web-server   LoadBalancer   10.0.94.47   a68661a55a68b47119adce3090730169-897732735.eu-west-2.elb.amazonaws.com   80:32580/TCP   7s
 ```
 
 ### Step 13 - Marvel at your creation
 
-After around 5 to 10 mins you should be able to hit the endpoint with your browser. Using the example above I would go to: http://51.143.235.215
+After around 5 to 10 mins you should be able to hit the endpoint with your browser. Using the example above I would go to: http://a68661a55a68b47119adce3090730169-897732735.eu-west-2.elb.amazonaws.com
 
 **NOTE** It does take a few mins, for some time you might see a 404 page.
 
