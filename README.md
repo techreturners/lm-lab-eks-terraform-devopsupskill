@@ -10,27 +10,17 @@ We'll use the AWS CLI to get information from the cluster. Follow this step if y
 
 To install this you can install manually by following [these instructions](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) or if you have a package manager you can use the instructions below:
 
-**Homebrew**
+**Mac Homebrew**
 
 ```
 brew install awscli
 ```
 
-**Chocolatey**
+**Windows Chocolatey**
 
 ```
 choco install awscli
 ```
-
-Once it is installed we need to ensure that the CLI is logged in - to do this run:
-
-```
-aws configure
-```
-
-It will prompt you for the **AWS Access Key ID** and the **AWS Secret Access Key**. 
-
-Enter the values as shown in the credentials file (`~/.aws/credentials`) you setup to get Terraform working (as part of the assignments prior to session 3).
 
 ### Step 2 - Install kubectl tool
 
@@ -144,17 +134,19 @@ We can then create your cluster by applying the configuration.
 terraform apply
 ```
 
-Sit back and relax - it might take 10 mins or so to create your cluster.
+Sit back and relax - it might take 10 mins or so to create your cluster. Perfect time to have a ☕️  or a chat together.
 
 Once its finished it'll output something like the info below. Those **outputs** are defined in the **outputs.tf** file.
 
 ```
-Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 53 added, 0 changed, 0 destroyed.
 
 Outputs:
 
-kubernetes_cluster_name = "devops-upskill-aks"
-resource_group_name = "devops-upskill-rg"
+cluster_endpoint = "https://C5CC135B19D791072B60A325678379BE.gr7.eu-west-2.eks.amazonaws.com"
+cluster_id = "devops-upskill-eks"
+cluster_name = "devops-upskill-eks"
+cluster_security_group_id = "sg-099d37e0a02ad6eae"
 ```
 
 Once its done you'll have a your Kubernetes cluster all ready to go!!!
@@ -165,17 +157,18 @@ Once its done you'll have a your Kubernetes cluster all ready to go!!!
 
 We need to configure **kubectl** to be able to authenticate with your cluster.
 
-To do this we use the AWS CLI to get the credentials. Notice how we reference the outputs in the command below:
+To do this we use the AWS CLI to get the credentials. Notice how we reference the outputs in the command below. 
 
+**NOTE** Replace the `terraform-iac` part with whatever your AWS Credentials profile is called in `~/.aws/credentials`
 
 ```
-aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)
+aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name) --profile terraform-iac
 ```
 
 It should say something like:
 
 ```
-Merged "devops-upskill-aks" as current context in /Users/jamesheggs/.kube/config
+Added new context arn:aws:eks:eu-west-2:1234567:cluster/devops-upskill-eks to /Users/user/.kube/config
 ```
 
 ### Step 10 - Check if kubectl can access cluster
@@ -191,9 +184,10 @@ kubectl get nodes
 It should show something like:
 
 ```
-NAME                              STATUS   ROLES   AGE     VERSION
-aks-default-51320324-vmss000000   Ready    agent   4m41s   v1.18.14
-aks-default-51320324-vmss000001   Ready    agent   3m57s   v1.18.14
+NAME                                       STATUS   ROLES    AGE   VERSION
+ip-10-0-1-216.eu-west-2.compute.internal   Ready    <none>   70s   v1.19.6-eks-49a6c0
+ip-10-0-2-161.eu-west-2.compute.internal   Ready    <none>   71s   v1.19.6-eks-49a6c0
+ip-10-0-2-186.eu-west-2.compute.internal   Ready    <none>   75s   v1.19.6-eks-49a6c0
 ```
 
 Exciting eh!!!

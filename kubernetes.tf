@@ -15,7 +15,8 @@ provider "kubernetes" {
       "eks",
       "get-token",
       "--cluster-name",
-      data.aws_eks_cluster.cluster.name
+      data.aws_eks_cluster.cluster.name,
+      "--profile ${var.credentials-profile}"
     ]
   }
 }
