@@ -64,6 +64,6 @@ If all works you should see it show progress of your "push"
 
 If you then open up the AWS web console you should be able to navigate to the container registry and see your image. It should look similar to the image below:
 
-![GCR Example Image](./images/ecr_example.png)
+![ECR Example Image](./images/ecr_example.png)
 
 You can now head back to the [README](../README.md) and lets work through getting that image deployed.
