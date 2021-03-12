@@ -35,8 +35,10 @@ Run the following command to authenticate your local Docker instance
 Replace the AWS_ACCOUNT_ID with the ID of your AWS account. If you are unsure of this you can log into the AWS console and click your name at the top right and you'll see your account ID.
 
 ```
-aws ecr get-login-password --region eu-west-2 | docker login --username AWS --password-stdin AWS_ACCOUNT_ID.dkr.ecr.eu-west-2.amazonaws.com
+aws ecr get-login-password --region eu-west-2 --profile terraform-iac | docker login --username AWS --password-stdin AWS_ACCOUNT_ID.dkr.ecr.eu-west-2.amazonaws.com
 ```
+
+The above command assumes that you set up AWS credentials using a profile name of **terraform-iac**
 
 ### Step 4 - Tag your docker image with the location of your registry
 
