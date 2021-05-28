@@ -4,9 +4,13 @@ The steps here cover how to provision your EKS cluster and container registry.
 
 ## Instructions
 
-**NOTE:** You might have already performed some of the steps (such as installing tools) mentioned below. If so you can ignore those steps and move directly to **Step 4**
+**NOTE:** You might have already performed some of the steps (such as installing tools) mentioned below. If so you can ignore those steps and move directly to **Step 5**
 
-### Step 1 - Install and configure the AWS CLI
+### Step 1 - Fork and clone
+
+Fork this repository into your own GitHub account and then clone (your forked version) down to your local machine.
+
+### Step 2 - Install and configure the AWS CLI
 
 We'll use the AWS CLI to get information from the cluster. Follow this step if you haven't yet installed the AWS CLI.
 
@@ -24,7 +28,7 @@ brew install awscli
 choco install awscli
 ```
 
-### Step 2 - Install kubectl tool
+### Step 3 - Install kubectl tool
 
 The `kubectl` tool will be utilised to interact with your Kubernetes (K8S) cluster.
 
@@ -60,7 +64,7 @@ Client Version: version.Info{Major:"1", Minor:"20", GitVersion:"v1.20.4", GitCom
 
 Dont worry if it says "Unable to connect to server" at this stage. We'll be sorting that later.
 
-### Step 3 - Explore the files
+### Step 4 - Explore the files
 
 Before we go ahead and create your cluster its worth exploring the files.
 
@@ -90,11 +94,11 @@ Configures the terraform providers (in our case the AWS provider) and sets the T
 
 This contains the values for the variables utilised in the terraform files. Make sure that the region looks correct and the **credentials-profile** should be as per the entry in your `~/.aws/credentials` that you set up after following the videos prior to session 3.
 
-### Step 4 - Update the tfvars file
+### Step 5 - Update the tfvars file
 
 Optionally update the tfvars file and ensure that the **credentials-profile** should be as per the entry in your `~/.aws/credentials` that you set up after following the videos prior to session 3.
 
-### Step 5 - Initialise terraform
+### Step 6 - Initialise terraform
 
 We need to get terraform to pull down the AWS provider.
 
@@ -120,7 +124,7 @@ Initializing provider plugins...
 - Reusing previous version of hashicorp/aws from the dependency lock file
 ```
 
-### Step 6 - Review changes with a plan
+### Step 7 - Review changes with a plan
 
 Firstly run a **plan** to see if what Terraform decides will happen.
 
@@ -128,7 +132,7 @@ Firstly run a **plan** to see if what Terraform decides will happen.
 terraform plan
 ```
 
-### Step 7 - Create your cluster with apply
+### Step 8 - Create your cluster with apply
 
 We can then create your cluster by applying the configuration.
 
@@ -153,7 +157,7 @@ cluster_security_group_id = "sg-099d37e0a02ad6eae"
 
 Once its done you'll have your Kubernetes cluster all ready to go!!!
 
-### Step 8 - Configure your **kube control** 
+### Step 9 - Configure your **kube control** 
 
 **kubectl** is used to issue actions on our cluster.
 
