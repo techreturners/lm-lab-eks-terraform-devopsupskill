@@ -108,6 +108,14 @@ In order to do this run:
 terraform init
 ```
 
+**NOTE**: If you have any issues with Terraform initialise it could be that the versions from a previous run have now been updated. You can remove those versions by running:
+
+```
+rm -rf .terraform
+```
+
+And then retrying `terraform init` 
+
 You should see something similar to the below:
 
 ```
