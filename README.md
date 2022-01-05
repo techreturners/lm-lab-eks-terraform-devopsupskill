@@ -4,6 +4,8 @@ This repository shows examples and guides for using [Terraform](https://terrafor
 
 ## Instructions
 
+Note: These instructions have been validated against version 1.1.2 of Terraform. If you are utilising a different version then please do get in touch if you have any problems 🙌
+
 ### Step 1 - Fork and clone
 
 Fork this repository into your own GitHub account and then clone (your forked version) down to your local machine.
@@ -110,16 +112,23 @@ You should see something similar to the below:
 
 ```
 Initializing modules...
+Downloading registry.terraform.io/terraform-aws-modules/eks/aws 17.24.0 for eks...
+- eks in .terraform/modules/eks
+- eks.fargate in .terraform/modules/eks/modules/fargate
+- eks.node_groups in .terraform/modules/eks/modules/node_groups
+Downloading registry.terraform.io/terraform-aws-modules/vpc/aws 2.66.0 for vpc...
+- vpc in .terraform/modules/vpc
 
 Initializing the backend...
 
 Initializing provider plugins...
-- Reusing previous version of hashicorp/random from the dependency lock file
-- Reusing previous version of hashicorp/local from the dependency lock file
-- Reusing previous version of hashicorp/null from the dependency lock file
-- Reusing previous version of hashicorp/template from the dependency lock file
-- Reusing previous version of hashicorp/kubernetes from the dependency lock file
-- Reusing previous version of hashicorp/aws from the dependency lock file
+- Finding terraform-aws-modules/http versions matching ">= 2.4.1"...
+- Finding hashicorp/cloudinit versions matching ">= 2.0.0"...
+- Finding hashicorp/template versions matching "2.2.0"...
+- Finding hashicorp/kubernetes versions matching ">= 1.11.1, 2.3.2"...
+- Finding hashicorp/aws versions matching ">= 2.68.0, >= 3.56.0, 3.70.0"...
+- Finding hashicorp/local versions matching ">= 1.4.0, 2.1.0"...
+- Finding hashicorp/null versions matching "3.1.0"...
 ```
 
 ### Step 7 - Review changes with a plan
@@ -291,6 +300,8 @@ nginx-web-server   LoadBalancer   10.0.94.47   a68661a55a68b47119adce3090730169-
 After around 5 to 10 mins you should be able to hit the endpoint with your browser. Using the example above I would go to: http://a68661a55a68b47119adce3090730169-897732735.eu-west-2.elb.amazonaws.com
 
 **NOTE** It does take a few mins, for some time you might see a 404 page.
+
+**NOTE** Remember to check Google classroom before tearing things down. There are a couple of screenshots you should submit as evidence of your success 🙌
 
 ### Step 14 - Tearing down your cluster
 
