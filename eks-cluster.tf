@@ -2,7 +2,7 @@ module "eks" {
   source          = "terraform-aws-modules/eks/aws"
   cluster_name    = local.cluster_name
   cluster_version = "1.19"
-  subnet_ids      = module.vpc.private_subnets
+  subnets         = module.vpc.private_subnets
 
   tags = {
     Environment = "training"
@@ -12,11 +12,11 @@ module "eks" {
 
   vpc_id = module.vpc.vpc_id
 
-  self_managed_node_group_defaults = {
+  workers_group_defaults = {
     root_volume_type = "gp2"
   }
 
-  self_managed_node_groups = [
+  worker_groups = [
     {
       name                          = "worker-group-1"
       instance_type                 = "t2.small"
