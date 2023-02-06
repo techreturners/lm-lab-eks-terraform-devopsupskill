@@ -290,7 +290,7 @@ Kubernetes will now create the required load balancer and create an external IP 
 Keep running the command below until you see an external IP address
 
 ```
- kubectl get services
+kubectl get services
 ```
 
 It should output something like this:
