@@ -74,11 +74,11 @@ Client Version: version.Info{Major:"1", Minor:"26", GitVersion:"v1.26.1", GitCom
 
 Before we go ahead and create your cluster its worth exploring the files.
 
-Oh and before we do explore, the files in this directory could have been named whatever we like. For example the **outputs.tf** file can have been called **foo.tf** - we just chose to call it that because it contained outputs. So the naming was more of a standard than a requirement.
+Oh and before you explore, the files in this directory could have been named whatever we like. For example the **outputs.tf** file can have been called **foo.tf** - we just chose to call it that because it contained outputs. So the naming was more of a standard than a requirement.
 
 **vpc.tf**
 
-Provisions and creates the Virtual Private Cloud (remember those from session two) that your cluster will be placed in.
+Provisions and creates the Virtual Private Cloud (remember those from session two) that your cluster will be placed in. Take a look into it and spot those CIDR ranges. Also remember the IP address ranges falling within that internal network designation from [RFC 1918](https://www.rfc-editor.org/rfc/rfc1918)
 
 **security-groups.tf**
 
