@@ -305,15 +305,21 @@ nginx-web-server   LoadBalancer   10.0.94.47   a68661a55a68b47119adce3090730169-
 
 After around 5 to 10 mins you should be able to hit the endpoint with your browser. Using the example above I would go to: http://a68661a55a68b47119adce3090730169-897732735.eu-west-2.elb.amazonaws.com
 
-**NOTE** It does take a few mins, for some time you might see a 404 page.
+> **⚠️ Note**
+> It does take a few mins, for some time you might see a 404 page.
 
-**NOTE** Remember to check Google classroom before tearing things down. There are a couple of screenshots you should submit as evidence of your success 🙌
+> **⚠️ Note**
+> Remember to check Google classroom before tearing things down. There are a couple of screenshots you should submit as evidence of your success 🙌
 
 ### Step 14 - Tearing down your cluster
 
 Finally we want to destroy our cluster.
 
-Firstly lets remove the service and ingress
+Firstly lets remove the kubernetes service.
+
+> **⚠️ Note**
+> You remove the service first because this will have provisioned an AWS Load Balancer. We need to remove that load balancer before we perform any destroying of infrastrucure otherwise the terraform destory will fail due to their being dependencies between the load balancer and your VPC.
+
 
 ```
 kubectl delete -f kubernetes/nginx-service.yaml
